@@ -1,17 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="app">
+    <JobList :jobs="jobs" />
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
+import { defineComponent, ref } from "vue";
+import axios from "axios";
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: "App",
+  components: {},
+
+  setup() {
+    //   const state = reactive({
+    //     name: "Link",
+    //     age: 123 as number,
+    //   });
+    // },
+    // const name = ref("Stella");
+    // const age = ref<number | string>(25);
+    // return { name, age };
+
+    const info = data() {
+      axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response =>(this.info = response))
+    }
+    ]);
+
+    return { jobs };
+  },
 });
 </script>
 
@@ -21,7 +38,8 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  text-decoration-color: blue;
+  color: #0a0a0a;
   margin-top: 60px;
 }
 </style>
